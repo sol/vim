@@ -2,7 +2,7 @@
 " Language:	Haskell Cabal Build file
 " Maintainer:	Vincent Berthoux <twinside@gmail.com>
 " File Types:	.cabal
-" Last Change:  2010 May 18
+" v1.4: Add benchmark support, thanks to Simon Meier
 " v1.3: Updated to the last version of cabal
 "       Added more highlighting for cabal function, true/false
 "       and version number. Also added missing comment highlighting.
@@ -26,8 +26,12 @@ elseif exists("b:current_syntax")
   finish
 endif
 
-syn keyword	cabalCategory	Library library Executable executable Flag flag
-syn keyword	cabalCategory	source-repository Source-Repository
+syn match	cabalCategory	"\cexecutable"
+syn match	cabalCategory	"\clibrary"
+syn match	cabalCategory	"\cbenchmark"
+syn match	cabalCategory	"\ctest-suite" 
+syn match	cabalCategory	"\csource-repository" 
+syn match	cabalCategory	"\cflag"
 
 syn keyword     cabalConditional    if else
 syn match       cabalOperator       "&&\|||\|!\|==\|>=\|<="
@@ -130,3 +134,4 @@ endif
 let b:current_syntax = "cabal"
 
 " vim: ts=8
+
